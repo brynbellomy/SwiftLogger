@@ -14,16 +14,23 @@ import Foundation
  */
 public struct SwiftLogger
 {
-    /** A `Logger` object initialized with the default built-in logging setup (`DefaultLogMessage`, `ColorLogMessageFormatter`, etc.). */
-    public static var defaultLogger = Logger(formatter:ColorLogMessageFormatter())
+    /** A `Logger` object initialized with the default built-in logging setup (`ColorLogMessageFormatter`, etc.). */
+    public static var defaultLogger = Logger()
 
-    /** Convenience function for logging configurations that don't need much customizing beyond what's offered by `ColorLogMessageFormatter`. */
-    public static func logDefaultMessageToDefaultLogger(level:IColorizableLogLevel, msg:String, file:String = __FILE__, function:String = __FUNCTION__, line:Int = __LINE__, column:Int = __COLUMN__) {
-        let message = DefaultLogMessage(level:level, msg:msg, file:file, function:function, line:line, column:column)
-        defaultLogger.log(message)
-    }
+//    * Convenience function for logging configurations that don't need much customizing beyond what's offered by `ColorLogMessageFormatter`. 
+//    public static func logToDefaultLogger(level:IColorizableLogLevel, msg:String, file:String = __FILE__, function:String = __FUNCTION__, line:Int = __LINE__, column:Int = __COLUMN__)
+//    {
+//        let message = LogMessage(type:.String, level:level, msg:msg, object:nil, file:file, function:function, line:line, column:column)
+//        defaultLogger.log(message)
+//    }
+//
+//    /** Convenience function for logging configurations that don't need much customizing beyond what's offered by `ColorLogMessageFormatter`. */
+//    public static func logDictionaryToDefaultLogger <K: Printable, V: Printable> (level:IColorizableLogLevel, prefix:String, dictionary:[K: V], file:String = __FILE__, function:String = __FUNCTION__, line:Int = __LINE__, column:Int = __COLUMN__)
+//    {
+//        let message = LogMessage(type:.Dictionary, level:level, msg:prefix, object:dictionary, file:file, function:function, line:line, column:column)
+//        defaultLogger.log(message)
+//    }
 }
-
 
 
 

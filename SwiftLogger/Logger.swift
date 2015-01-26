@@ -12,21 +12,15 @@ import Foundation
 /**
     Accepts messages to be logged to a set of `ILogOutput` interfaces.
  */
-public class Logger<F : ILogMessageFormatter>
+public class Logger
 {
-    public typealias Message = F.LogMessageType
-    public typealias Formatter = F
-
     public var isAsync = true
-    public var formatter : Formatter
 
-    var outputs = [ILogOutput]()
-    var loggingQueue = dispatch_queue_create("com.illumntr.Log.loggingQueue", DISPATCH_QUEUE_SERIAL)
+    private var outputs = [(ILogOutput, ILogMessageFormatter)]()
+    private var loggingQueue = dispatch_queue_create("com.illumntr.Log.loggingQueue", DISPATCH_QUEUE_SERIAL)
 
 
-    public init(formatter f:Formatter)
-    {
-        formatter = f
+    public init() {
         setLoggingQueueTarget(dispatch_get_main_queue())
     }
 
@@ -35,31 +29,31 @@ public class Logger<F : ILogMessageFormatter>
         dispatch_set_target_queue(loggingQueue, target)
     }
 
-    public func addOutput(logger:ILogOutput) {
-        outputs.append(logger)
+
+    public func addOutput (logger:ILogOutput, formatter:ILogMessageFormatter = DefaultLogMessageFormatter()) {
+        outputs.append((logger, formatter))
     }
 
 
-    public func log(message:Message)
+    public func log(message:LogMessage)
     {
-        let formattedMessage = formatter.formatLogMessage(message)
-
         if isAsync
         {
             dispatch_async(loggingQueue) {
-                self.sendMessageToOutputs(formattedMessage)
+                self.sendMessageToOutputs(message)
             }
         }
         else {
-            sendMessageToOutputs(formattedMessage)
+            sendMessageToOutputs(message)
         }
     }
 
 
-    private func sendMessageToOutputs(message:String)
+    private func sendMessageToOutputs(message:LogMessage)
     {
-        for logger in outputs {
-            logger.write(message)
+        for (logger, formatter) in outputs {
+            let formattedMessage = formatter.formatLogMessage(message)
+            logger.write(formattedMessage)
         }
     }
 }

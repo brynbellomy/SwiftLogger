@@ -14,16 +14,13 @@ import Foundation
  */
 public protocol ILogMessageFormatter
 {
-    /** The type of the log message object used by the current logging setup. */
-    typealias LogMessageType
-
     /**
         Converts a single log message object into a `String`.
     
         :param: logMessage The log message to convert.
         :returns: A string representing the provided log message.
      */
-    func formatLogMessage(logMessage: LogMessageType) -> String
+    func formatLogMessage(logMessage: LogMessage) -> String
 }
 
 

@@ -66,16 +66,16 @@ public struct ColorLogging
 
     public struct Colors
     {
-        public static let White     = RGB(r:255,g:255,b:255)
-        public static let Red       = RGB(r:178,g:34,b:34)
-        public static let Yellow    = RGB(r:255,g:185,b:0)
-        public static let Orange    = RGB(r:225,g:135,b:0)
-        public static let Olive     = RGB(r:85,g:107,b:47)
-        public static let Green     = RGB(r:34,g:139,b:34)
-        public static let Purple    = RGB(r:132,g:112,b:255)
-        public static let Blue      = RGB(r:30,g:144,b:255)
-        public static let LightBlue = RGB(r:130,g:244,b:255)
-        public static let Grey      = RGB(r:160,g:160,b:160)
+        public static let White     = RGB(r:255, g:255, b:255)
+        public static let Red       = RGB(r:178, g:34,  b:34)
+        public static let Yellow    = RGB(r:255, g:185, b:0)
+        public static let Orange    = RGB(r:225, g:135, b:0)
+        public static let Olive     = RGB(r:85,  g:107, b:47)
+        public static let Green     = RGB(r:34,  g:139, b:34)
+        public static let Purple    = RGB(r:132, g:112, b:255)
+        public static let Blue      = RGB(r:30,  g:144, b:255)
+        public static let LightBlue = RGB(r:130, g:244, b:255)
+        public static let Grey      = RGB(r:160, g:160, b:160)
     }
 
     public struct Constants
