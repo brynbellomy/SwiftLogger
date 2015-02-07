@@ -12,8 +12,8 @@ Pod::Spec.new do |s|
   s.source_files = 'SwiftLogger/*.swift'
 
   s.dependency 'SwiftFlatUIColors'
-  s.dependency 'Starscream'
-  s.dependency 'Funky'
+  s.dependency 'Starscream', '0.9.2'
+  s.dependency 'Funky', '0.1.2'
 
   s.homepage = 'https://github.com/brynbellomy/SwiftLogger'
   s.source = { :git => 'https://github.com/brynbellomy/SwiftLogger.git', :tag => '0.0.1' }

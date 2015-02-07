@@ -63,30 +63,30 @@ public class WebsocketLogOutput: ILogOutput
 
 extension WebsocketLogOutput: WebSocketDelegate {
 
-    public func websocketDidConnect() {
+    public func websocketDidConnect(websocket:WebSocket) {
         println("websocket is connected")
         state = .Connected
     }
 
-    public func websocketDidDisconnect(error: NSError?) {
+    public func websocketDidDisconnect(websocket:WebSocket, error: NSError?) {
         state = .Disconnected
         if let e = error {
             println("websocket is disconnected: \(e.localizedDescription)")
         }
     }
 
-    public func websocketDidWriteError(error: NSError?) {
+    public func websocketDidWriteError(websocket:WebSocket, error: NSError?) {
         state = .Error
         if let e = error {
             println("wez got an error from the websocket: \(e.localizedDescription)")
         }
     }
 
-    public func websocketDidReceiveMessage(text: String) {
+    public func websocketDidReceiveMessage(websocket:WebSocket, text: String) {
         println("Received text: \(text)")
     }
 
-    public func websocketDidReceiveData(data: NSData) {
+    public func websocketDidReceiveData(websocket:WebSocket, data: NSData) {
         println("Received data: \(data.length)")
     }
 }
