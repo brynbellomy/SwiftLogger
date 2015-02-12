@@ -86,7 +86,7 @@ public func lllog_dump<T>(level:DefaultLogLevel, value:T, _ prefix:String? = nil
     var text = ""
     dump(value, &text)
 
-    if let prefix = prefix? {
+    if let prefix = prefix {
         text = "\(prefix) \(text)"
     }
 

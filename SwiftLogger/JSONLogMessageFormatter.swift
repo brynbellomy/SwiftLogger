@@ -46,7 +46,7 @@ public struct JSONLogMessageFormatter: ILogMessageFormatter
         if let data = NSJSONSerialization.dataWithJSONObject(dict, options:NSJSONWritingOptions.allZeros, error:&error) {
             // @@TODO: somehow get the current dispatch queue name (the problem is capturing it at the callsite of the lllog() function so it doesn't just return the logging queue name)
             if let jsonString = NSString(data:data, encoding:NSUTF8StringEncoding) {
-                return jsonString
+                return jsonString as! String
             }
         }
 
